@@ -1,0 +1,36 @@
+﻿<Window x:Class="SpeedofMath2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SpeedofMath2"
+        mc:Ignorable="d"
+        Title="TheSpeedofMath2" Height="600" Width="750" Background="White">
+    
+    <Window.Resources>
+        <local:BoolVisibilityConverter x:Key="BoolVisibilityConverter"/>
+    </Window.Resources>
+
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Background="Black">
+        <TextBlock Text="The Speed of Math v2.0" Background="Black" Foreground="White" FontFamily="Calibri" FontSize="36" TextAlignment="Center" Margin="0,100,0,0"  Visibility="{Binding titleVisible, Converter={StaticResource BoolVisibilityConverter}, Mode=TwoWay}"/>
+        <TextBlock Text="Timer:" Background="Black" Foreground="White" FontFamily="Calibri" FontSize="16" TextAlignment="Center" Visibility="{Binding titleVisible, Converter={StaticResource BoolVisibilityConverter}, Mode=TwoWay}" Margin="359,387.5,0,0"/>
+        <TextBox Text="{Binding time, Mode=TwoWay}" Background="LightGoldenrodYellow" Opacity="0.8" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="25" Width="40" Visibility="{Binding startVisible, Converter={StaticResource BoolVisibilityConverter}, Mode=TwoWay}" Margin="535,375,70,65" />
+        <Button Height="75" Width="200" Content="Start" Background="SteelBlue" Opacity="0.75" Visibility="{Binding startVisible, Converter={StaticResource BoolVisibilityConverter}, Mode=TwoWay}" Command="{Binding StartCommand}" HorizontalAlignment="Center" Margin="0,200,0,195"/>
+        <StackPanel Orientation="Horizontal" Margin="0,350,0,0" HorizontalAlignment="Center" Visibility="{Binding startVisible, Converter={StaticResource BoolVisibilityConverter}, Mode=TwoWay}">
+            <RadioButton Content="Addition   " Background="LightSteelBlue" Foreground="White" Command="{Binding AddOnly}" Margin="0,0,0,120"/>
+            <RadioButton Content="Subtraction   " Background="LightGoldenrodYellow" Foreground="White" Command="{Binding SubtractOnly}" Margin="0,0,0,120"/>
+            <RadioButton Content="Multiplication   " Background="LightSteelBlue" Foreground="White" Command="{Binding MultiplyOnly}" Margin="0,0,0,120"/>
+            <RadioButton Content="Division   " Background="LightGoldenrodYellow" Foreground="White" Command="{Binding DivideOnly}" Margin="0,0,0,120"/>
+            <RadioButton Content="All" Background="LightSteelBlue" Foreground="White" Command="{Binding All}" IsChecked="True" Margin="0,0,0,120"/>
+        </StackPanel>
+
+        <TextBlock Text="{Binding qOutput}" Foreground="White" Visibility="{Binding qTextVisible, Converter={StaticResource BoolVisibilityConverter}, Mode=TwoWay}" FontFamily="Calibri" FontSize="36" TextAlignment="Center" Margin="114,85,115,324"/>
+        <Button Name="AnsButton1" Content="{Binding buttonText1}" Background="Gold" Opacity="0.775" Height="50" Width="125" Margin="113,225,404,198" Visibility="{Binding button1Visible, Converter={StaticResource BoolVisibilityConverter}, Mode=TwoWay}" Command="{Binding ButtonCommand1}"/>
+        <Button Name="AnsButton2" Content="{Binding buttonText2}" Background="Gold" Opacity="0.775" Height="50" Width="125" Margin="258.5,225,258.5,198" Visibility="{Binding button2Visible, Converter={StaticResource BoolVisibilityConverter}, Mode=TwoWay}" Command="{Binding ButtonCommand2}"/>
+        <Button Name="AnsButton3" Content="{Binding buttonText3}" Background="Gold" Opacity="0.775" Height="50" Width="125" Margin="404,225,113,198" Visibility="{Binding button3Visible, Converter={StaticResource BoolVisibilityConverter}, Mode=TwoWay}" Command="{Binding ButtonCommand3}"/>
+
+        <TextBlock Text="{Binding streak}" Foreground="Snow" Visibility="{Binding exitButtonVisible, Converter= {StaticResource BoolVisibilityConverter}, Mode=TwoWay}" Margin="0,415,0,10" FontFamily="Calibri" FontSize="24" TextAlignment="Center"/>
+        <Button Name="Exit" Content="Exit" Background="Pink" Opacity="0.8" Height="50" Width="200" Visibility="{Binding exitButtonVisible, Converter= {StaticResource BoolVisibilityConverter}, Mode=TwoWay}" Command="{Binding ExitCommand}" Margin="329,314,113,80" />
+        <Button Name="Retry" Content="Retry" Background="LightGreen" Opacity="0.75" Height="50" Width="200" Visibility="{Binding exitButtonVisible, Converter= {StaticResource BoolVisibilityConverter}, Mode=TwoWay}" Command="{Binding RetryCommand}" Margin="113,314,329,80"/>
+    </Grid> 
+</Window>
